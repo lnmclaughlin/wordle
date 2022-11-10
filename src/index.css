@@ -4,20 +4,56 @@
 }
 
 :root {
-  --background: #fff;
-  --text-primary: #000;
-  --text-secondary: #e2eeee;
-  --accent: #eeab4d;
+  --background: #faf9f6;
+  --text-primary: #252525;
+  --text-secondary: #3a3a3c;
+  --accent: #538d4e;
 }
 [data-theme="dark"] {
-  --background: #000;
-  --text-primary: #fff;
-  --text-secondary: rgb(96, 96, 96);
-  --accent: #eeab4d;
+  --background: #252525;
+  --text-primary: #faf9f6;
+  --text-secondary: #818384;
+  --accent: #538d4e;
 }
 
 body {
   font-family: sans-serif;
-  background-color: #fff;
-  color: #000;
+  background-color: #faf9f6;
+  color: #252525;
 }
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #818384;
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  width: 100vw;
+  margin: 20px;
+  padding-bottom: 15px;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+.char {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #818384;
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  padding: 10px;
+}
+
+/* #538d4e correct 
+#b59f3b present 
+#3a3a3c not present */

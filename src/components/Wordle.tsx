@@ -23,9 +23,13 @@ const Wordle = () => {
 
   return (
     <div>
-      <div>
+      <div className="row">
         {guess.map((char, i) => {
-          return <span key={i}>{char}</span>;
+          return (
+            <span className="char" key={i}>
+              {char}
+            </span>
+          );
         })}
       </div>
     </div>
