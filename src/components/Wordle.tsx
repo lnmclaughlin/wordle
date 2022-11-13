@@ -1,15 +1,27 @@
 import { useEffect, useState } from "react";
 
 const Wordle = () => {
-  const [guess, setGuess] = useState<Array<string>>([]);
+  const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
+  const [guess, setGuess] = useState<string[]>([]);
 
   useEffect(() => {
     function handleKeyDown({ key }: { key: string }) {
-      if (guess.length < 5) {
-        const isChar = /^[a-z]$/.test(key);
-        if (isChar) {
-          setGuess((prev) => [...prev, key]);
-        }
+      const isChar = /^[a-z]$/.test(key);
+      const isBackspace = key === "Backspace";
+      const isGuessFinished = guess.length === 5;
+      const isSubmit = key === "Enter";
+
+      if (isBackspace) {
+        setGuess((prev) => {
+          const temp = [...prev];
+          temp.pop();
+          return temp;
+        });
+      } else if (isChar && !isGuessFinished) {
+        setGuess((prev) => [...prev, key]);
+      } else if (isGuessFinished && isSubmit) {
+        setSubmittedGuesses((prev) => [...prev, guess]);
+        setGuess([]);
       }
     }
     window.addEventListener("keydown", handleKeyDown);
@@ -17,17 +29,15 @@ const Wordle = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [guess.length]);
-
-  console.log(guess);
+  }, [guess.length, guess]);
 
   return (
     <div>
       <div className="row">
-        {guess.map((char, i) => {
+        {Array.from({ length: 5 }).map((_, i) => {
           return (
             <span className="char" key={i}>
-              {char}
+              {guess[i] || ""}
             </span>
           );
         })}
