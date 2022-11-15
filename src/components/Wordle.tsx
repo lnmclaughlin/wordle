@@ -1,4 +1,9 @@
 import { useEffect, useState } from "react";
+import CurrentGuess, { GuessProps } from "./CurrentGuess";
+import EmptyGuess from "./EmptyGuess";
+import SubmittedGuesses from "./SubmittedGuesses";
+
+const totalGuesses = 6;
 
 const Wordle = () => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
@@ -6,7 +11,7 @@ const Wordle = () => {
 
   useEffect(() => {
     function handleKeyDown({ key }: { key: string }) {
-      const isChar = /^[a-z]$/.test(key);
+      const letter = /^[a-z]$/.test(key);
       const isBackspace = key === "Backspace";
       const isGuessFinished = guess.length === 5;
       const isSubmit = key === "Enter";
@@ -17,7 +22,7 @@ const Wordle = () => {
           temp.pop();
           return temp;
         });
-      } else if (isChar && !isGuessFinished) {
+      } else if (letter && !isGuessFinished) {
         setGuess((prev) => [...prev, key]);
       } else if (isGuessFinished && isSubmit) {
         setSubmittedGuesses((prev) => [...prev, guess]);
@@ -33,16 +38,15 @@ const Wordle = () => {
 
   return (
     <div>
-      <div className="row">
-        {Array.from({ length: 5 }).map((_, i) => {
-          return (
-            <span className="char" key={i}>
-              {guess[i] || ""}
-            </span>
-          );
-        })}
-      </div>
+      <SubmittedGuesses submittedGuesses={submittedGuesses} />
+      <CurrentGuess guess={guess} />
+      {Array.from({ length: totalGuesses - submittedGuesses.length - 1 }).map(
+        (_, i) => {
+          return <EmptyGuess key={i} />;
+        }
+      )}
     </div>
   );
 };
+
 export default Wordle;

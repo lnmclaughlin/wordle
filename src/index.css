@@ -17,9 +17,10 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #faf9f6;
   color: #252525;
+  height: 100vh;
 }
 
 header {
@@ -44,7 +45,7 @@ h1 {
   padding-top: 15px;
 }
 
-.char {
+.letter {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,6 +56,12 @@ h1 {
   padding: 10px;
 }
 
+.submitted-guess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
 /* #538d4e correct 
 #b59f3b present 
 #3a3a3c not present */
