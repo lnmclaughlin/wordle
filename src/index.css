@@ -62,6 +62,9 @@ h1 {
   align-items: center;
   background-color: red;
 }
+.current-guess {
+  background-color: blue;
+}
 /* #538d4e correct 
 #b59f3b present 
 #3a3a3c not present */

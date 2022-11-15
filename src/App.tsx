@@ -23,7 +23,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Wordle />} />
+          <Route path="/" element={<Wordle puzzleWord="dream" />} />
         </Routes>
       </Router>
     </div>

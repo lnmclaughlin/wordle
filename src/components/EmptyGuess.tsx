@@ -1,9 +1,11 @@
 const EmptyGuess = () => {
   return (
-    <div className="row">
-      {Array.from({ length: 5 }).map((_, i) => {
-        return <span className="letter" key={i} />;
-      })}
+    <div className="empty-guess">
+      <div className="row">
+        {Array.from({ length: 5 }).map((_, i) => {
+          return <span className="letter" key={i} />;
+        })}
+      </div>
     </div>
   );
 };

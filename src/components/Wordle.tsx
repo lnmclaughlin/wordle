@@ -5,7 +5,11 @@ import SubmittedGuesses from "./SubmittedGuesses";
 
 const totalGuesses = 6;
 
-const Wordle = () => {
+type WordleProps = {
+  puzzleWord: string;
+};
+
+const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
 
@@ -36,15 +40,19 @@ const Wordle = () => {
     };
   }, [guess.length, guess]);
 
+  const isCorrect =
+    submittedGuesses.length > 0 &&
+    submittedGuesses[submittedGuesses.length - 1].join("") === puzzleWord;
+
   return (
     <div>
       <SubmittedGuesses submittedGuesses={submittedGuesses} />
-      <CurrentGuess guess={guess} />
-      {Array.from({ length: totalGuesses - submittedGuesses.length - 1 }).map(
-        (_, i) => {
-          return <EmptyGuess key={i} />;
-        }
-      )}
+      {!isCorrect && <CurrentGuess guess={guess} />}
+      {Array.from({
+        length: totalGuesses - submittedGuesses.length - (isCorrect ? 0 : 1),
+      }).map((_, i) => {
+        return <EmptyGuess key={i} />;
+      })}
     </div>
   );
 };
