@@ -45,8 +45,11 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
     submittedGuesses[submittedGuesses.length - 1].join("") === puzzleWord;
 
   return (
-    <div>
-      <SubmittedGuesses submittedGuesses={submittedGuesses} />
+    <div className="Wordle">
+      <SubmittedGuesses
+        submittedGuesses={submittedGuesses}
+        puzzleWord={puzzleWord}
+      />
       {!isCorrect && <CurrentGuess guess={guess} />}
       {Array.from({
         length: totalGuesses - submittedGuesses.length - (isCorrect ? 0 : 1),

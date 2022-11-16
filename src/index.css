@@ -38,6 +38,7 @@ h1 {
   margin: 20px;
   padding-bottom: 15px;
 }
+
 .row {
   display: flex;
   justify-content: center;
@@ -54,17 +55,21 @@ h1 {
   width: 60px;
   margin: 5px;
   padding: 10px;
+  text-transform: uppercase;
 }
 
 .submitted-guess {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
 }
 .current-guess {
-  background-color: blue;
+  background-color: #b59f3b;
 }
-/* #538d4e correct 
-#b59f3b present 
-#3a3a3c not present */
+
+.correct-letter {
+  background-color: #538d4e;
+}
+.incorrect-guess {
+  background-color: #3a3a3c;
+}
