@@ -27,7 +27,7 @@ const SubmittedGuesses = ({
             );
           }
           return (
-            <div className="incorrect-guess">
+            <div className="incorrect-letter">
               <span className="letter" key={i}>
                 {guess[i] || ""}
               </span>

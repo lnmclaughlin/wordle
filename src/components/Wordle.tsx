@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Word from "../models/Word";
 import CurrentGuess, { GuessProps } from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
 import SubmittedGuesses from "./SubmittedGuesses";
