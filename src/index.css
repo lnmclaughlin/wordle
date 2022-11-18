@@ -18,7 +18,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #faf9f6;
+  /* background-color: #faf9f6; */
   color: #252525;
   height: 100vh;
   width: 100vw;
@@ -55,7 +55,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1.5px solid #818384;
+  border: 2px solid #818384;
   height: 60px;
   width: 60px;
   margin: 10px;

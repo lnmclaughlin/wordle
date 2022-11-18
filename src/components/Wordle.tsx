@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Word from "../models/Word";
 import CurrentGuess, { GuessProps } from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
@@ -13,6 +13,7 @@ type WordleProps = {
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
+  // const [wordOfTheDay, setWordOfTheDay] =useState<Word[]>([])
 
   useEffect(() => {
     function handleKeyDown({ key }: { key: string }) {
@@ -41,15 +42,31 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
     };
   }, [guess.length, guess]);
 
+  // if (puzzleWord.length !== 5) {
+  //   throw new Error(`${puzzleWord} is not a valid word.`);
+  // }
+
   const isCorrect =
     submittedGuesses.length > 0 &&
     submittedGuesses[submittedGuesses.length - 1].join("") === puzzleWord;
+
+  const puzzleWordLetterCount = useMemo(() => {
+    puzzleWord.split("").reduce<Record<string, number>>((acc, letter) => {
+      if (!acc.hasOwnProperty(letter)) {
+        acc[letter] = 1;
+      } else {
+        acc[letter] += 1;
+      }
+      return acc;
+    }, {});
+  }, [puzzleWord]);
 
   return (
     <div className="Wordle">
       <SubmittedGuesses
         submittedGuesses={submittedGuesses}
         puzzleWord={puzzleWord}
+        puzzleWordLetterCount={puzzleWordLetterCount}
       />
       {!isCorrect && <CurrentGuess guess={guess} />}
       {Array.from({
