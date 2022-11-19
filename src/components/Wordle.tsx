@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import Word from "../models/Word";
+import Word from "../db/Word";
 import CurrentGuess, { GuessProps } from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
 import SubmittedGuesses from "./SubmittedGuesses";
@@ -50,23 +50,22 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
     submittedGuesses.length > 0 &&
     submittedGuesses[submittedGuesses.length - 1].join("") === puzzleWord;
 
-  const puzzleWordLetterCount = useMemo(() => {
-    puzzleWord.split("").reduce<Record<string, number>>((acc, letter) => {
-      if (!acc.hasOwnProperty(letter)) {
-        acc[letter] = 1;
-      } else {
-        acc[letter] += 1;
-      }
-      return acc;
-    }, {});
-  }, [puzzleWord]);
+  // const puzzleWordLetterCount = useMemo(() => {
+  //   puzzleWord.split("").reduce<Record<string, number>>((acc, letter) => {
+  //     if (!acc.hasOwnProperty(letter)) {
+  //       acc[letter] = 1;
+  //     } else {
+  //       acc[letter] += 1;
+  //     }
+  //     return acc;
+  //   }, {});
+  // }, [puzzleWord]);
 
   return (
     <div className="Wordle">
       <SubmittedGuesses
         submittedGuesses={submittedGuesses}
         puzzleWord={puzzleWord}
-        puzzleWordLetterCount={puzzleWordLetterCount}
       />
       {!isCorrect && <CurrentGuess guess={guess} />}
       {Array.from({

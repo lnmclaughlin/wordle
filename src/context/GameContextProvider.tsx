@@ -4,3 +4,5 @@ import GameContext from "./GameContext";
 const GameContextProvider = ({ children }: { children: ReactNode }) => {
   return <GameContext.Provider value={{}}>{children}</GameContext.Provider>;
 };
+
+export default GameContextProvider;
