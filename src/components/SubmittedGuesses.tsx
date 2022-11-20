@@ -29,23 +29,19 @@ SubmittedGuessesProps) => {
 
           if (isCorrect) {
             return (
-              <>
-                <div className="correct-letter">
-                  <span className="letter" key={i}>
-                    {currentLetterGuess}
-                  </span>
-                </div>
-              </>
+              <div className="correct-letter">
+                <span className="letter" key={i}>
+                  {currentLetterGuess}
+                </span>
+              </div>
             );
           }
           return (
-            <>
-              <div className="incorrect-letter">
-                <span className="letter" key={i}>
-                  {guess[i] || ""}
-                </span>
-              </div>
-            </>
+            <div className="incorrect-letter">
+              <span className="letter" key={i}>
+                {guess[i] || ""}
+              </span>
+            </div>
           );
         })}
       </div>
@@ -59,8 +55,9 @@ SubmittedGuessesProps) => {
           <SubmittedGuess
             puzzleWord={puzzleWord}
             guess={guess}
+            key={i}
             // puzzleWordLetterCount={puzzleWordLetterCount}
-            // key={i}
+            //
           />
         );
       })}

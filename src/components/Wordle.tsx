@@ -13,6 +13,7 @@ type WordleProps = {
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
+  const [alert, setAlert] = useState("");
   // const [wordOfTheDay, setWordOfTheDay] =useState<Word[]>([])
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
   }, [guess.length, guess]);
 
   // if (puzzleWord.length !== 5) {
-  //   throw new Error(`${puzzleWord} is not a valid word.`);
+  //   setAlert(`${puzzleWord} is not a valid word.`);
   // }
 
   const isCorrect =

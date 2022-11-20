@@ -6,7 +6,7 @@
 :root {
   --background: #faf9f6;
   --text-primary: #252525;
-  --text-secondary: #3a3a3c;
+  --text-secondary: #818384;
   --accent: #538d4e;
 }
 [data-theme="dark"] {
@@ -18,11 +18,10 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  /* background-color: #faf9f6; */
-  color: #252525;
   height: 100vh;
   width: 100vw;
 }
+
 .theme {
   margin: 5px;
   padding: 5px;
@@ -34,6 +33,7 @@ header {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #818384;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -63,7 +63,7 @@ h1 {
   text-transform: uppercase;
 }
 
-/* .current-guess {
+/* .current-guess span {
   background-color: #b59f3b;
 } */
 
@@ -73,9 +73,9 @@ h1 {
   align-items: center;
 }
 
-.correct-letter {
+.correct-letter span {
   background-color: #538d4e;
 }
-.incorrect-letter {
+.incorrect-letter span {
   background-color: #3a3a3c;
 }
