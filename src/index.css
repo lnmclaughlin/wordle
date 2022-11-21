@@ -6,7 +6,7 @@
 :root {
   --background: #faf9f6;
   --text-primary: #252525;
-  --text-secondary: #818384;
+  --text-secondary: #faf9f6;
   --accent: #538d4e;
 }
 [data-theme="dark"] {
@@ -63,10 +63,6 @@ h1 {
   text-transform: uppercase;
 }
 
-/* .current-guess span {
-  background-color: #b59f3b;
-} */
-
 .submitted-guess {
   display: flex;
   justify-content: center;
@@ -78,4 +74,8 @@ h1 {
 }
 .incorrect-letter span {
   background-color: #3a3a3c;
+}
+
+.present-letter span {
+  background-color: #b59f3b;
 }
