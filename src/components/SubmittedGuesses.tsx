@@ -24,8 +24,8 @@ const SubmittedGuesses = ({
           const currentLetterGuess = guess[i];
           const currentPuzzleLetter = puzzleWord[i];
           const isCorrect = currentLetterGuess === currentPuzzleLetter;
-          // const isPresent =
-          //   !isCorrect && !!puzzleWordLetterCount[currentPuzzleLetter];
+          const isPresent =
+            !isCorrect && !!puzzleWordLetterCount[currentLetterGuess];
 
           if (isCorrect) {
             return (
@@ -35,17 +35,15 @@ const SubmittedGuesses = ({
                 </span>
               </div>
             );
-          }
-          // else if (isPresent) {
-          //   return (
-          //     <div className="present-letter">
-          //       <span className="letter" key={i}>
-          //         {/* {} */}
-          //       </span>
-          //     </div>
-          //   );
-          // }
-          else {
+          } else if (isPresent) {
+            return (
+              <div className="present-letter">
+                <span className="letter" key={i}>
+                  {currentLetterGuess}
+                </span>
+              </div>
+            );
+          } else {
             return (
               <div className="incorrect-letter">
                 <span className="letter" key={i}>

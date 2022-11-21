@@ -44,14 +44,16 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
     submittedGuesses[submittedGuesses.length - 1].join("") === puzzleWord;
 
   const puzzleWordLetterCount = useMemo(() => {
-    puzzleWord.split("").reduce<Record<string, number>>((acc, letter) => {
-      if (!acc.hasOwnProperty(letter)) {
-        acc[letter] = 1;
-      } else {
-        acc[letter] += 1;
-      }
-      return acc;
-    }, {});
+    return puzzleWord
+      .split("")
+      .reduce<Record<string, number>>((acc, letter) => {
+        if (!acc.hasOwnProperty(letter)) {
+          acc[letter] = 1;
+        } else {
+          acc[letter] += 1;
+        }
+        return acc;
+      }, {});
   }, [puzzleWord]);
 
   return (
