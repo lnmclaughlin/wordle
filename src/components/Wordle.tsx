@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import CurrentGuess, { GuessProps } from "./CurrentGuess";
+import Word from "../db/Word";
+import CurrentGuess from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
 import SubmittedGuesses from "./SubmittedGuesses";
 
@@ -11,6 +12,8 @@ type WordleProps = {
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
+  const [alert, setAlert] = useState("");
+  const [wordOfTheDay, setWordOfTheDay] = useState<typeof Word | null>([]);
 
   useEffect(() => {
     function handleKeyDown({ key }: { key: string }) {

@@ -6,13 +6,13 @@
 :root {
   --background: #faf9f6;
   --text-primary: #252525;
-  --text-secondary: #faf9f6;
+  --text-secondary: #949697;
   --accent: #538d4e;
 }
 [data-theme="dark"] {
   --background: #252525;
   --text-primary: #faf9f6;
-  --text-secondary: #818384;
+  --text-secondary: #949697;
   --accent: #538d4e;
 }
 
@@ -67,6 +67,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #faf9f6;
 }
 
 .correct-letter span {
