@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import Word from "../db/Word";
 import CurrentGuess from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
 import SubmittedGuesses from "./SubmittedGuesses";
@@ -12,7 +11,6 @@ type WordleProps = {
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
-  const [wordOfTheDay, setWordOfTheDay] = useState<typeof Word | null>([]);
 
   useEffect(() => {
     function handleKeyDown({ key }: { key: string }) {
@@ -67,17 +65,13 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
         puzzleWord={puzzleWord}
         puzzleWordLetterCount={puzzleWordLetterCount!}
       />
-      {!isCorrect && <CurrentGuess guess={guess} />}
+      {!isFailure && !isCorrect && <CurrentGuess guess={guess} />}
       {Array.from({
         length: totalGuesses - submittedGuesses.length - (isCorrect ? 0 : 1),
       }).map((_, i) => {
         return <EmptyGuess key={i} />;
       })}
-      {isCorrect && (
-        <div className="win">
-          You did it! You're a Rockstar! Well done, you.
-        </div>
-      )}
+      {isCorrect && <div className="win">Great Job!</div>}
       {isFailure && (
         <div className="fail">So close! Better luck next time.</div>
       )}
