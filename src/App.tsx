@@ -24,7 +24,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Wordle puzzleWord="agile" />} />
+          <Route path="/" element={<Wordle puzzleWord="smile" />} />
         </Routes>
         <Keyboard />
       </Router>

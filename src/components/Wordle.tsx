@@ -12,7 +12,6 @@ type WordleProps = {
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
-  const [alert, setAlert] = useState("");
   const [wordOfTheDay, setWordOfTheDay] = useState<typeof Word | null>([]);
 
   useEffect(() => {
@@ -46,6 +45,8 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
     submittedGuesses.length > 0 &&
     submittedGuesses[submittedGuesses.length - 1].join("") === puzzleWord;
 
+  const isFailure = !isCorrect && submittedGuesses.length === totalGuesses;
+
   const puzzleWordLetterCount = useMemo(() => {
     return puzzleWord
       .split("")
@@ -72,6 +73,14 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
       }).map((_, i) => {
         return <EmptyGuess key={i} />;
       })}
+      {isCorrect && (
+        <div className="win">
+          You did it! You're a Rockstar! Well done, you.
+        </div>
+      )}
+      {isFailure && (
+        <div className="fail">So close! Better luck next time.</div>
+      )}
     </div>
   );
 };

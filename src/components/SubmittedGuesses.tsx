@@ -19,18 +19,19 @@ const SubmittedGuesses = ({
     puzzleWordLetterCount: Record<string, number>;
   }) {
     let letterMap = { ...puzzleWordLetterCount };
-    // guess.forEach(()=>{
-    //   const isCorrect= puzzleWord[i]===currentLetterGuess;
-    //   if(isCorrect){letterMap[currentLetterGuess] -=1;
-    //   }
-    // })
+
+    guess.forEach((currentLetterGuess, i) => {
+      const isCorrect = puzzleWord[i] === currentLetterGuess;
+      if (isCorrect) {
+        letterMap[currentLetterGuess] -= 1;
+      }
+    });
+
     return (
       <div className="submitted-guess">
         {guess.map((currentLetterGuess, i) => {
           const currentPuzzleLetter = puzzleWord[i];
           const isCorrect = currentLetterGuess === currentPuzzleLetter;
-          // let isPresent =
-          //   !isCorrect && !!puzzleWordLetterCount[currentLetterGuess];
 
           if (isCorrect) {
             letterMap[currentLetterGuess] -= 1;

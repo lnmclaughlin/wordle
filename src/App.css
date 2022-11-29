@@ -16,5 +16,4 @@
   background-color: var(--background);
   border: 2px var(--text-primary) solid;
   transition: all 0.5s;
-  margin: 15px;
 }
