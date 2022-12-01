@@ -71,7 +71,9 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
       }).map((_, i) => {
         return <EmptyGuess key={i} />;
       })}
-      {isCorrect && <div className="win">Great Job!</div>}
+      {isCorrect && (
+        <div className="win">Look at you, you little rockstar! Well done!</div>
+      )}
       {isFailure && (
         <div className="fail">So close! Better luck next time.</div>
       )}
