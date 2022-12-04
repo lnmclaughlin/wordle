@@ -37,18 +37,18 @@ header {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 32px;
   text-align: center;
   width: 100vw;
-  margin: 20px;
-  padding-bottom: 15px;
+  margin: 15px;
+  padding-bottom: 10px;
 }
 
 .row {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  padding-top: 15px;
+  margin-top: 5px;
+  padding-top: 10px;
 }
 
 .letter {
@@ -56,10 +56,10 @@ h1 {
   justify-content: center;
   align-items: center;
   border: 2px solid #818384;
-  height: 60px;
-  width: 60px;
-  margin: 10px;
-  padding: 10px;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  padding: 5px;
   text-transform: uppercase;
 }
 
@@ -82,7 +82,7 @@ h1 {
 }
 .win {
   background-image: linear-gradient(
-    90deg,
+    520deg,
     rgba(255, 0, 0, 1) 0%,
     rgba(255, 154, 0, 1) 10%,
     rgba(208, 222, 33, 1) 20%,
