@@ -304,4 +304,5 @@ const Word = [
   "yearn",
   "zebra",
 ];
+
 export default Word;

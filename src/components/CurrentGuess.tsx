@@ -1,8 +1,6 @@
+import { GuessProps } from "./SubmittedGuesses";
 import Wordle from "./Wordle";
 
-export interface GuessProps {
-  guess: string[];
-}
 const CurrentGuess = ({ guess }: GuessProps) => {
   return (
     <div className="current-guess">

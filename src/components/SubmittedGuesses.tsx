@@ -1,9 +1,13 @@
-import { GuessProps } from "./CurrentGuess";
-
 export type SubmittedGuessesProps = {
   submittedGuesses: string[][];
   puzzleWord: string;
   puzzleWordLetterCount: Record<string, number>;
+};
+
+type GuessType = string[];
+
+export type GuessProps = {
+  guess: GuessType;
 };
 
 const SubmittedGuesses = ({
@@ -20,6 +24,12 @@ const SubmittedGuesses = ({
   }) {
     let letterMap = { ...puzzleWordLetterCount };
 
+    guess.forEach((currentLetterGuess, i) => {
+      const isCorrect = puzzleWord[i] === currentLetterGuess;
+      if (isCorrect) {
+        letterMap[currentLetterGuess] -= 1;
+      }
+    });
     return (
       <div className="submitted-guess">
         {guess.map((currentLetterGuess, i) => {
@@ -32,7 +42,7 @@ const SubmittedGuesses = ({
           let isPresent = false;
           if (!isCorrect && letterMap[currentLetterGuess]) {
             isPresent = true;
-            letterMap[currentLetterGuess] = letterMap[currentLetterGuess] - 1;
+            letterMap[currentLetterGuess] -= 1;
           }
 
           if (isCorrect) {

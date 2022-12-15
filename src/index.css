@@ -105,3 +105,9 @@ h1 {
   font-size: 20px;
   text-align: center;
 }
+
+.fail {
+  margin-top: 15px;
+  font-size: 20px;
+  text-align: center;
+}

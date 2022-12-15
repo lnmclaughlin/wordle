@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import Word from "../db/Word";
 import CurrentGuess from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
 import SubmittedGuesses from "./SubmittedGuesses";
@@ -8,6 +9,18 @@ type WordleProps = {
   puzzleWord: string;
 };
 
+function wordOfTheDay() {
+  const [word, setWord] = useState<typeof Word[] | null>(null);
+
+  useEffect(() => {
+    async function fetchWord(Word: string[]) {
+      const response = await fetch(`/db/Word`).then((res) => res.json());
+      setWord(response.word);
+    }
+    fetchWord(Word);
+  }, []);
+  return wordOfTheDay;
+}
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
@@ -58,6 +71,9 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
       }, {});
   }, [puzzleWord]);
 
+  if (wordOfTheDay === null) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className="Wordle">
       <SubmittedGuesses
