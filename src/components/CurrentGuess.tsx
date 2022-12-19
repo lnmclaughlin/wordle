@@ -1,6 +1,10 @@
-import { GuessProps } from "./SubmittedGuesses";
 import Wordle from "./Wordle";
 
+export type GuessType = string[];
+
+export type GuessProps = {
+  guess: GuessType;
+};
 const CurrentGuess = ({ guess }: GuessProps) => {
   return (
     <div className="current-guess">

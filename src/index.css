@@ -104,10 +104,35 @@ h1 {
   margin-top: 15px;
   font-size: 20px;
   text-align: center;
+  /* animation: bounce 1s ease infinite 1s; */
 }
 
 .fail {
   margin-top: 15px;
   font-size: 20px;
   text-align: center;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-55px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  58% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  65% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
 }

@@ -9,18 +9,18 @@ type WordleProps = {
   puzzleWord: string;
 };
 
-function wordOfTheDay() {
-  const [word, setWord] = useState<typeof Word[] | null>(null);
+// function wordOfTheDay() {
+//   const [word, setWord] = useState<typeof Word[] | null>(null);
 
-  useEffect(() => {
-    async function fetchWord(Word: string[]) {
-      const response = await fetch(`/db/Word`).then((res) => res.json());
-      setWord(response.word);
-    }
-    fetchWord(Word);
-  }, []);
-  return wordOfTheDay;
-}
+//   useEffect(() => {
+//     async function fetchWord(_Word: string[]) {
+//       const response = await fetch(`/db/Word`).then((res) => res.json());
+//       setWord(response.word);
+//     }
+//     fetchWord(Word);
+//   }, []);
+//   return wordOfTheDay;
+// }
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
@@ -71,9 +71,9 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
       }, {});
   }, [puzzleWord]);
 
-  if (wordOfTheDay === null) {
-    return <p>Loading...</p>;
-  }
+  // if (wordOfTheDay === null) {
+  //   return <p>Loading...</p>;
+  // }
   return (
     <div className="Wordle">
       <SubmittedGuesses
@@ -88,11 +88,9 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
         return <EmptyGuess key={i} />;
       })}
       {isCorrect && (
-        <div className="win">Look at you, you little rockstar! Well done!</div>
+        <p className="win">Look at you, you little rockstar! Well done!</p>
       )}
-      {isFailure && (
-        <div className="fail">So close! Better luck next time.</div>
-      )}
+      {isFailure && <p className="fail">So close! Better luck next time.</p>}
     </div>
   );
 };

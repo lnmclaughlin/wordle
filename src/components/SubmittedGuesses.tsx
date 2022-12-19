@@ -1,13 +1,9 @@
+import { GuessProps } from "./CurrentGuess";
+
 export type SubmittedGuessesProps = {
   submittedGuesses: string[][];
   puzzleWord: string;
   puzzleWordLetterCount: Record<string, number>;
-};
-
-type GuessType = string[];
-
-export type GuessProps = {
-  guess: GuessType;
 };
 
 const SubmittedGuesses = ({
