@@ -1,4 +1,4 @@
-const Word = [
+const word = [
   "agent",
   "apple",
   "award",
@@ -305,4 +305,4 @@ const Word = [
   "zebra",
 ];
 
-export default Word;
+export default word;

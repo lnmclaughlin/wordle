@@ -1,5 +1,5 @@
 import express from "express";
-import Word from "../db/Word";
+import word from "../db/Word";
 
 const routes = express.Router();
 
@@ -10,7 +10,7 @@ export const errorResponse = (error: any, res: any) => {
 
 routes.get("/", async (req, res) => {
   try {
-    const results = typeof Word;
+    const results = typeof word;
     res.json(results);
   } catch (err) {
     errorResponse(err, res);

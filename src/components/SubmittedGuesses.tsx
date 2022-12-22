@@ -26,6 +26,8 @@ const SubmittedGuesses = ({
         letterMap[currentLetterGuess] -= 1;
       }
     });
+    console.log(letterMap);
+
     return (
       <div className="submitted-guess">
         {guess.map((currentLetterGuess, i) => {

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import Word from "../db/Word";
 import CurrentGuess from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
+import Keyboard from "./Keyboard";
 import SubmittedGuesses from "./SubmittedGuesses";
 
 const totalGuesses = 6;
@@ -9,21 +9,10 @@ type WordleProps = {
   puzzleWord: string;
 };
 
-// function wordOfTheDay() {
-//   const [word, setWord] = useState<typeof Word[] | null>(null);
-
-//   useEffect(() => {
-//     async function fetchWord(_Word: string[]) {
-//       const response = await fetch(`/db/Word`).then((res) => res.json());
-//       setWord(response.word);
-//     }
-//     fetchWord(Word);
-//   }, []);
-//   return wordOfTheDay;
-// }
 const Wordle = ({ puzzleWord }: WordleProps) => {
   const [submittedGuesses, setSubmittedGuesses] = useState<string[][]>([]);
   const [guess, setGuess] = useState<string[]>([]);
+  console.log(puzzleWord);
 
   useEffect(() => {
     function handleKeyDown({ key }: { key: string }) {
@@ -64,7 +53,9 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
       .reduce<Record<string, number>>((acc, letter) => {
         if (!acc.hasOwnProperty(letter)) {
           acc[letter] = 1;
-        } else {
+        }
+        // else if {}
+        else {
           acc[letter] += 1;
         }
         return acc;
@@ -91,6 +82,10 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
         <p className="win">Look at you, you little rockstar! Well done!</p>
       )}
       {isFailure && <p className="fail">So close! Better luck next time.</p>}
+
+      <>
+        <Keyboard />
+      </>
     </div>
   );
 };
