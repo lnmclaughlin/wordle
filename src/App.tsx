@@ -26,6 +26,10 @@ function App() {
     setWordOfTheDay(getWordOFTheDay());
   }, []);
 
+  if (wordOfTheDay === null) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="App" data-theme={theme}>
       <button className="theme" onClick={switchTheme}>
@@ -36,7 +40,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Wordle puzzleWord={wordOfTheDay} />} />
         </Routes>
-        <Keyboard />
       </Router>
     </div>
   );

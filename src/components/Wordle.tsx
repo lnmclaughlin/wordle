@@ -62,30 +62,28 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
       }, {});
   }, [puzzleWord]);
 
-  // if (wordOfTheDay === null) {
-  //   return <p>Loading...</p>;
-  // }
   return (
     <div className="Wordle">
-      <SubmittedGuesses
-        submittedGuesses={submittedGuesses}
-        puzzleWord={puzzleWord}
-        puzzleWordLetterCount={puzzleWordLetterCount!}
-      />
-      {!isFailure && !isCorrect && <CurrentGuess guess={guess} />}
-      {Array.from({
-        length: totalGuesses - submittedGuesses.length - (isCorrect ? 0 : 1),
-      }).map((_, i) => {
-        return <EmptyGuess key={i} />;
-      })}
-      {isCorrect && (
-        <p className="win">Look at you, you little rockstar! Well done!</p>
-      )}
-      {isFailure && <p className="fail">So close! Better luck next time.</p>}
-
-      <>
+      <div className="gameboard">
+        <SubmittedGuesses
+          submittedGuesses={submittedGuesses}
+          puzzleWord={puzzleWord}
+          puzzleWordLetterCount={puzzleWordLetterCount!}
+        />
+        {!isFailure && !isCorrect && <CurrentGuess guess={guess} />}
+        {Array.from({
+          length: totalGuesses - submittedGuesses.length - (isCorrect ? 0 : 1),
+        }).map((_, i) => {
+          return <EmptyGuess key={i} />;
+        })}
+        {isCorrect && (
+          <p className="win">Look at you, you little rockstar! Well done!</p>
+        )}
+        {isFailure && <p className="fail">So close! Better luck next time.</p>}
+      </div>
+      <div className="keyboard">
         <Keyboard />
-      </>
+      </div>
     </div>
   );
 };
