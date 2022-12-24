@@ -1,44 +1,68 @@
 import { useMemo } from "react";
 
-const Keyboard = () => {
+type KeyPressHandler = (key: string) => void;
+
+type KeyboardProps = {
+  keyPressHandler: KeyPressHandler;
+};
+
+type KeyProps = {
+  keyName: string;
+  keyPressHandler: KeyPressHandler;
+};
+
+const Keyboard = ({ keyPressHandler }: KeyboardProps) => {
   const top = useMemo(() => {
     return `qwertyuiop`.split("").map((char) => {
       return (
-        <span className="key" key={char}>
-          {char}
-        </span>
+        <Key keyPressHandler={keyPressHandler} key={char} keyName={char} />
       );
     });
-  }, []);
+  }, [keyPressHandler]);
   const middle = useMemo(() => {
     return `asdfghjkl`.split("").map((char) => {
       return (
-        <span className="key" key={char}>
-          {char}
-        </span>
+        <Key keyPressHandler={keyPressHandler} key={char} keyName={char} />
       );
     });
-  }, []);
+  }, [keyPressHandler]);
   const bottom = useMemo(() => {
-    return `zxcvbnm`.split("").map((char) => {
+    const letters = `zxcvbnm`.split("").map((char) => {
       return (
-        <span className="key" key={char}>
-          {char}
-        </span>
+        <Key keyPressHandler={keyPressHandler} key={char} keyName={char} />
       );
     });
-  }, []);
+    const enterKey = (
+      <Key keyPressHandler={keyPressHandler} key="Enter" keyName="Enter" />
+    );
+    const backspaceKey = (
+      <Key
+        keyPressHandler={keyPressHandler}
+        key="Backspace"
+        keyName="Backspace"
+      />
+    );
+    return [enterKey, ...letters, backspaceKey];
+  }, [keyPressHandler]);
+
+  function Key({ keyName, keyPressHandler }: KeyProps) {
+    return (
+      <span
+        className="key"
+        onClick={() => {
+          keyPressHandler(keyName);
+        }}
+      >
+        {keyName}
+      </span>
+    );
+  }
+
   return (
     <div className="Keyboard">
-      <div className="wrapper">
-        <div className="keyboard-row">{top}</div>
-        <div className="keyboard-row">{middle}</div>
-        <div className="keyboard-row">
-          <span className="key">Enter</span>
-          {bottom}
-          <span className="key">Backspace</span>
-        </div>
-      </div>
+      <div className="keyboard-row">{top}</div>
+      <div className="keyboard-row">{middle}</div>
+      <div className="keyboard-row">{bottom}</div>
     </div>
   );
 };

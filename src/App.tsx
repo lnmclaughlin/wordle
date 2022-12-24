@@ -4,7 +4,6 @@ import "./App.css";
 import Header from "./components/Header";
 import Wordle from "./components/Wordle";
 import useLocalStorage from "use-local-storage";
-import Keyboard from "./components/Keyboard";
 import word from "./db/Word";
 
 function App() {

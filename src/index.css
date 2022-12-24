@@ -6,7 +6,7 @@
 :root {
   --background: #faf9f6;
   --text-primary: #252525;
-  --text-secondary: #949697;
+  --text-secondary: #818384;
   --accent: #538d4e;
 }
 [data-theme="dark"] {
@@ -32,7 +32,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #818384;
+  border-bottom: 1px solid #949697;
   margin-bottom: 20px;
 }
 
@@ -49,15 +49,13 @@ h1 {
 .row {
   display: flex;
   justify-content: center;
-  margin-top: 5px;
-  padding-top: 10px;
 }
 
 .letter {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #818384;
+  border: 2px solid #949697;
   height: 40px;
   width: 40px;
   margin: 5px;
@@ -119,13 +117,10 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
 }
-.wrapper {
-  margin-bottom: 10px;
-}
+
 .key {
-  background-color: #818384;
+  background-color: #949697;
   cursor: pointer;
   border-radius: 5px;
   font-size: 15px;
@@ -134,7 +129,7 @@ h1 {
   padding: 12px;
 }
 .key:hover {
-  background-color: #5d5d5d;
+  background-color: #717273;
 }
 .keyboard-row {
   display: flex;

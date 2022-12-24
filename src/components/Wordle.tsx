@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import CurrentGuess from "./CurrentGuess";
 import EmptyGuess from "./EmptyGuess";
 import Keyboard from "./Keyboard";
@@ -14,8 +14,8 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
   const [guess, setGuess] = useState<string[]>([]);
   console.log(puzzleWord);
 
-  useEffect(() => {
-    function handleKeyDown({ key }: { key: string }) {
+  const handleKeyInput = useCallback(
+    (key: string) => {
       const letter = /^[a-z]$/.test(key);
       const isBackspace = key === "Backspace";
       const isGuessFinished = guess.length === 5;
@@ -33,13 +33,19 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
         setSubmittedGuesses((prev) => [...prev, guess]);
         setGuess([]);
       }
+    },
+    [guess]
+  );
+  useEffect(() => {
+    function handleKeyDown({ key }: { key: string }) {
+      handleKeyInput(key);
     }
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [guess.length, guess]);
+  }, [guess.length, guess, handleKeyInput]);
 
   const isCorrect =
     submittedGuesses.length > 0 &&
@@ -82,7 +88,7 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
         {isFailure && <p className="fail">So close! Better luck next time.</p>}
       </div>
       <div className="keyboard">
-        <Keyboard />
+        <Keyboard keyPressHandler={handleKeyInput} />
       </div>
     </div>
   );
