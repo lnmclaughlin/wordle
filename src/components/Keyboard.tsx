@@ -48,7 +48,7 @@ const Keyboard = ({ keyPressHandler }: KeyboardProps) => {
   function Key({ keyName, keyPressHandler }: KeyProps) {
     return (
       <span
-        className="key"
+        className="key "
         onClick={() => {
           keyPressHandler(keyName);
         }}

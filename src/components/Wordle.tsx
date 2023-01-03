@@ -71,6 +71,14 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
   return (
     <div className="Wordle">
       <div className="gameboard">
+        <>
+          {isCorrect && (
+            <p className="win">Look at you, you little rockstar! Well done!</p>
+          )}
+          {isFailure && (
+            <p className="fail">So close! Better luck next time.</p>
+          )}
+        </>
         <SubmittedGuesses
           submittedGuesses={submittedGuesses}
           puzzleWord={puzzleWord}
@@ -82,10 +90,6 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
         }).map((_, i) => {
           return <EmptyGuess key={i} />;
         })}
-        {isCorrect && (
-          <p className="win">Look at you, you little rockstar! Well done!</p>
-        )}
-        {isFailure && <p className="fail">So close! Better luck next time.</p>}
       </div>
       <div className="keyboard">
         <Keyboard keyPressHandler={handleKeyInput} />
