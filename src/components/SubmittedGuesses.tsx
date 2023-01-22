@@ -46,7 +46,7 @@ const SubmittedGuesses = ({
           if (isCorrect) {
             return (
               <div className="correct-letter">
-                <span className="letter" key={i}>
+                <span className="letter guessed-letter" key={i}>
                   {currentLetterGuess}
                 </span>
               </div>
@@ -54,7 +54,7 @@ const SubmittedGuesses = ({
           } else if (isPresent) {
             return (
               <div className="present-letter">
-                <span className="letter" key={i}>
+                <span className="letter guessed-letter" key={i}>
                   {currentLetterGuess}
                 </span>
               </div>
@@ -62,7 +62,7 @@ const SubmittedGuesses = ({
           } else {
             return (
               <div className="incorrect-letter">
-                <span className="letter" key={i}>
+                <span className="letter guessed-letter" key={i}>
                   {guess[i] || ""}
                 </span>
               </div>

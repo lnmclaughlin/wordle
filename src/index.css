@@ -94,7 +94,6 @@ h1 {
   height: 40px;
   width: 40px;
   margin: 5px;
-  padding: 5px;
   text-transform: uppercase;
 }
 
@@ -115,7 +114,9 @@ h1 {
 .present-letter span {
   background-color: #b59f3b;
 }
-
+.guessed-letter {
+  border: 0;
+}
 .keyboard {
   display: flex;
   flex-direction: column;
