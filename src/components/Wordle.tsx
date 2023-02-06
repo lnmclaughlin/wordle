@@ -59,9 +59,7 @@ const Wordle = ({ puzzleWord }: WordleProps) => {
       .reduce<Record<string, number>>((acc, letter) => {
         if (!acc.hasOwnProperty(letter)) {
           acc[letter] = 1;
-        }
-        // else if {}
-        else {
+        } else {
           acc[letter] += 1;
         }
         return acc;
