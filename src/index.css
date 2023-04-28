@@ -107,6 +107,7 @@ h1 {
 .correct-letter span {
   background-color: #538d4e;
 }
+
 .incorrect-letter span {
   background-color: #3a3a3c;
 }
@@ -117,6 +118,7 @@ h1 {
 .guessed-letter {
   border: 0;
 }
+
 .keyboard {
   display: flex;
   flex-direction: column;
@@ -142,4 +144,28 @@ h1 {
 .keyboard-row {
   display: flex;
   justify-content: center;
+}
+
+@keyframes bounce {
+  70% {
+    transform: translateY(0%);
+  }
+  80% {
+    transform: translateY(-15%);
+  }
+  90% {
+    transform: translateY(0%);
+  }
+  95% {
+    transform: translateY(-7%);
+  }
+  97% {
+    transform: translateY(0%);
+  }
+  99% {
+    transform: translateY(-3%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
